@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* ul li {
+            list-style-type: none;
+        } */
+    </style>
+
+
+</head>
+
+<body>
+    <input type="text" id="input">
+    <button onclick="show()">Add Item</button>
+    <button id="dltBtn" onclick="dlt()">Delete Last Item</button>
+    <ul id="list"></ul>
+
+    <script>
+
+        let arr = [];
+        let input = document.getElementById("input");
+        let list = document.getElementById("list");
+        let dltBtn = document.getElementById("dltBtn");
+
+        dltBtn.style.display = "none"
+
+        function show() {
+            if (input.value !== "") {
+                arr.push(input.value);
+
+                list.innerHTML = "";
+                arr.map(item => {
+                    list.innerHTML += `<li>${item}</li>`
+                })
+            }
+            dltBtn.style.display = "inline";
+        }
+
+        function dlt() {
+            arr.pop();
+
+            list.innerHTML = "";
+
+            arr.map(item => {
+                list.innerHTML += `<li>${item}</li>`
+            })
+
+            if (arr.length == 0) {
+                dltBtn.style.display = "none"
+            }
+            console.log(arr);
+        }
+
+    </script>
+</body>
+
+</html>
